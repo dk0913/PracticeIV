@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NavigationDrawerActivity">
+
+    <TextView
+        android:id="@+id/title_name_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tap to Select a Pet Store to Update/Delete:"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_main"
+        android:layout_width="match_parent"
+        android:layout_height="475dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:elevation="0dp"
+        tools:listitem="@layout/pet_store_item"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/button_add_store"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Add">
+        </Button>
+        <Button
+            android:id="@+id/button_view_details"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Details">
+        </Button>
+
+        <Button
+            android:id="@+id/button_update_store"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Update">
+        </Button>
+
+        <Button
+            android:id="@+id/button_delete_store"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:text="Delete">
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

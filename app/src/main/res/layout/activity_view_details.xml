@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewDetailsActivity"
+    android:layout_gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pet Store Details:"
+        android:textAlignment="center"
+        android:textSize="20dp"/>
+    <TextView
+        android:id="@+id/details_text_view_store_name_title"
+        android:text="Store Name:"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/details_text_view_store_name"
+        android:text="Store's Name Goes Here"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/details_text_view_address_title"
+        android:text="Address:"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/details_text_view_address"
+        android:text="Store's Address Goes Here"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"/>
+    <ImageView
+        android:id="@+id/details_store_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center">
+    </ImageView>
+
+</LinearLayout>

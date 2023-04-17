@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="150dp"
+android:background="@color/white">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/nav_drawer_header_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/archie_in_office_chair" />
+
+
+    <TextView
+        android:id="@+id/nav_drawer_header_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/nav_drawer_header_image"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="@string/nav_drawer_title"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/nav_drawer_header_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nav_drawer_header_title"
+        android:layout_marginLeft="16dp"
+
+        android:text="@string/nav_drawer_subtitle"
+        android:textSize="16sp" />
+
+</RelativeLayout>
