@@ -36,7 +36,7 @@ import model.PetStore;
 import model.User;
 
 public class NavigationDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    /** Step 1: create a reference to the DrawerLayout */
+
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     private NavigationView mNavigationView;
@@ -88,7 +88,8 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
 
 
 
-        /** Get the email passed as intent extra from login activity  */
+        /** Get the email passed as intent extra from login activity, or user passed as serializable
+         * extra from sign up activity */
 
         String email = getIntent().getStringExtra("email");
         if (email!=null) {
@@ -102,7 +103,7 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
         }
 
 
-        /** Step 7:Set the default fragment to the HomeFragment */
+        /** Step 7:Set the user information for a new home fragment as the default fragment */
         HomeFragment defaultFragment = new HomeFragment();
 
         defaultFragment.setEmail(email);
@@ -116,7 +117,7 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
 
 
     }
-
+    //creates either home or pet store fragments when a user taps the corresponding navigation item
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -137,13 +138,14 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
         return true;
     }
 
+    //inflates the navigation menu items
     @Override
    public boolean onCreateOptionsMenu(Menu menu) {
        //Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_menu, menu);
         return true;
    }
-
+    //not used yet
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 //        // Handle action bar item clicks here. The action bar will
@@ -158,26 +160,27 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
 //        return super.onOptionsItemSelected(item);
         return false;
     }
-
+    //toggles actionbardrawer between the 2 different configurations (open and closed)
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
-
+    //syncs the open/closed state of the navigation drawer
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mActionBarDrawerToggle.syncState();
     }
-
+    //replaces the current fragment shown with the fragment the user selects to open in the navigation
+    //drawer
     private void replaceFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
-
+    //not used for now
     private void updateNavHeader(){
         View headerView = mNavigationView.getHeaderView(0);
         mNameTV = headerView.findViewById(R.id.nav_drawer_header_title);
@@ -185,7 +188,7 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
         mNameTV.setText(currentUser.getName());
         mEmailTV.setText(currentUser.getEmail());
     }
-
+    //not used for now
     private void getUserData(String email){
         mFirebaseDatabaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         String userName;
@@ -217,7 +220,8 @@ public class NavigationDrawerActivity extends AppCompatActivity implements Navig
             }
         });
     }
-
+    /*retrieves the signed in user's data to populate in navigation drawer header that will be implemented
+    later*/
     private void getUserData2(String email){
         String userName;
         if(email.equals("dkatz122@gmail.com")){

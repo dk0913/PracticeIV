@@ -39,6 +39,8 @@ public class SignUpActivity extends AppCompatActivity {
         mPasswordEditText = findViewById(R.id.edit_text_passwordSignUp);
         mCreateAccountButton = findViewById(R.id.button_sign_up);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        /*Create account button click triggers retrieval of all the user-entered information and
+        * passes to signUp method*/
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-
+    /*adds new information to Realtime DB and launches NavigationDrawer activity*/
     private void signUp(String name,String userName,String email, String password){
         mFirebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
@@ -76,7 +78,7 @@ public class SignUpActivity extends AppCompatActivity {
 //        mDatabase = FirebaseDatabase.getInstance().getReference();
 //        mDatabase.child("Users").child(userID).setValue(user);
 //    }
-
+    /*handles the insert operation of user data into Realtime DB user tree*/
     public void addUserToDatabase(String userID,User user){
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("Users").child(userID).setValue(user);

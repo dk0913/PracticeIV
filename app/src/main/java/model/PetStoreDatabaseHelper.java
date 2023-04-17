@@ -4,7 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
-
+//this class is not yet used
 public class PetStoreDatabaseHelper {
     private List<PetStore> petStoreList;
     private DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("Pet Stores");

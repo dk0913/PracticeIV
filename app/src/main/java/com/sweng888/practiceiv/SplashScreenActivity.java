@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ProgressBar;
-
+/*splash screen displayed to user before login activity*/
 public class SplashScreenActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
 
@@ -27,8 +27,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         animation.setInterpolator(new DecelerateInterpolator());
         animation.start();
 
-        /** We use a Handler object to delay the launch of the MainActivity by 4 seconds.
-         * After 4 seconds, an intent is created to launch the MainActivity, and the finish()
+        /** We use a Handler object to delay the launch of the LoginActivity by 4 seconds.
+         * After 4 seconds, an intent is created to launch the LoginActivity, and the finish()
          * method is called to destroy the splash screen activity. */
         new Handler().postDelayed(new Runnable() {
             @Override

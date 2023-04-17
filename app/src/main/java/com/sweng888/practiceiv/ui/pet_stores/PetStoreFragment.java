@@ -34,6 +34,8 @@ import java.util.List;
 import model.PetStore;
 import model.PetStoreAdapter;
 
+/*PetStoreFragment displays RecyclerView with the user's favorite pet store, and four buttons at the
+* bottom for list management, one button for each CRUD operation*/
 public class PetStoreFragment extends Fragment implements SelectListener{
     private TextView mTextViewGreetUser;
     private RecyclerView mRecyclerView;
@@ -57,6 +59,7 @@ public class PetStoreFragment extends Fragment implements SelectListener{
         mUpdateButton = view.findViewById(R.id.button_update_store);
         mDeleteButton = view.findViewById(R.id.button_delete_store);
         mFirebaseDatabase = FirebaseDatabase.getInstance().getReference("Pet Stores");
+        //loading list of pet stores and setting adapter and layout manager of RecyclerView
         mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -75,6 +78,7 @@ public class PetStoreFragment extends Fragment implements SelectListener{
                         error.toException());
             }
         });
+        //button click listeners for each CRUD operation button
         mAddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +116,7 @@ public class PetStoreFragment extends Fragment implements SelectListener{
         super.onCreate(savedInstanceState);
 
     }
-
+    /*stores the pet store that the user tapped to update, view details, or delete*/
     @Override
     public void onItemClicked(PetStore petStore) {
         selectedPetStore = petStore;
@@ -128,7 +132,7 @@ public class PetStoreFragment extends Fragment implements SelectListener{
         intent.putExtra("selectedPetStore",selectedPetStore);
         startActivity(intent);
     }
-
+    /*querying the database for the selected pet store and deleting it from the database*/
     private void deleteStoreFromDB(PetStore selectedPetStore){
        Query nameQuery =  mFirebaseDatabase.orderByChild("name").equalTo(selectedPetStore.getName());
        nameQuery.addListenerForSingleValueEvent(new ValueEventListener() {

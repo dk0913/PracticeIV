@@ -27,7 +27,7 @@ import java.util.Map;
 
 import model.PetStore;
 import model.User;
-
+/*Activity for user to modify information stored for one of their favorite pet stores*/
 public class UpdateStoreActivity extends AppCompatActivity {
     private EditText mEditTextName;
     private EditText mEditTextAddress;
@@ -48,7 +48,9 @@ public class UpdateStoreActivity extends AppCompatActivity {
         mConfirmButton = findViewById(R.id.update_button_confirm);
         mClearButton = findViewById(R.id.update_button_clear);
 
-        //set editText text to existing values for the pet store being updated
+        /*Gets selected pet store from intent extra and set EditTexts text to existing values for
+        the pet store being updated
+         */
         petStoreBeingUpdated = (PetStore) getIntent().getSerializableExtra("selectedPetStore");
         mEditTextName.setText(petStoreBeingUpdated.getName());
         mEditTextAddress.setText(petStoreBeingUpdated.getAddress());
@@ -69,6 +71,7 @@ public class UpdateStoreActivity extends AppCompatActivity {
             }
         });
     }
+    /*Overwrites existing pet store data in DB with user input*/
     public void confirm(){
         String name = mEditTextName.getText().toString().trim();
         String address = mEditTextAddress.getText().toString().trim();
@@ -88,7 +91,8 @@ public class UpdateStoreActivity extends AppCompatActivity {
         mEditTextAddress.setText("");
         mEditTextImageURL.setText("");
     }
-
+    /*Finds the selected pet store in Realtime DB using a query and then overwrites all fields
+    * with user input*/
     private  void updatePetStore(PetStore modifiedPetStore){
         Map<String, Object> updatedPetStoreFields = modifiedPetStore.toMap();
         Map<String, Object> childUpdates = new HashMap<>();
@@ -115,8 +119,4 @@ public class UpdateStoreActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
 }

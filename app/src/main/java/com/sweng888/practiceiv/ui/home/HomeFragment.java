@@ -39,7 +39,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import model.PetStore;
 import model.PetStoreAdapter;
 import model.User;
-
+/*Home fragment displays user's profile pic, name, and email and a button for user to sign out*/
 public class HomeFragment extends Fragment{
     private DatabaseReference mFirebaseDatabaseUsers;
     private String email;
@@ -56,7 +56,10 @@ public class HomeFragment extends Fragment{
         mNameTextView = view.findViewById(R.id.account_name);
         mEmailTextView = view.findViewById(R.id.account_email);
         mSignOutButton = view.findViewById(R.id.sign_out_Button);
+        /*initializing an instance of the Users JSON tree stored in RealtimeDB*/
         mFirebaseDatabaseUsers = FirebaseDatabase.getInstance().getReference("Users");
+        /*adding a listener for any updates to data in the user tree stored in RealtimeDB
+        * and updating a local list*/
         mFirebaseDatabaseUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -100,6 +103,8 @@ public class HomeFragment extends Fragment{
 
             }
         });
+        /*getting user data to populate whether the fragment is passed the user's email from the
+        * login activity or a User object from the sign up activity*/
         if(email!=null) {
             getUserData(email);
         }else{
@@ -111,6 +116,8 @@ public class HomeFragment extends Fragment{
                getUserData(email);
            }
        }
+        /*button for the user to sign out using firebase authentication and takes the user back
+        * to the login activity*/
         mSignOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,7 +139,7 @@ public class HomeFragment extends Fragment{
     public void setEmail(String email){
         this.email = email;
     }
-
+    /* getting user data from the passed email to populate name and email*/
     private void getUserData(String email){
         mFirebaseDatabaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         String userName;

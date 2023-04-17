@@ -1,7 +1,7 @@
 package model;
 
 import java.io.Serializable;
-
+/*Data model class for Users*/
 public class User implements Serializable {
     private String name;
     private String email;

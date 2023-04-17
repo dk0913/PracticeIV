@@ -5,7 +5,7 @@ import com.google.firebase.database.Exclude;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
+/*data model for pet stores*/
 public class PetStore implements Serializable {
     private String address;
     private String imageURL;
@@ -18,7 +18,7 @@ public class PetStore implements Serializable {
     }
 
     public PetStore(){}
-
+    //turns a data model object into a hashmap for updating database
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();

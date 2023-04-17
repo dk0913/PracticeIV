@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import model.PetStore;
-
+/*Activity for a user to add a new pet store to their list of favorite stores*/
 public class AddStoreActivity extends AppCompatActivity {
     private EditText mEditTextName;
     private EditText mEditTextAddress;
@@ -20,6 +20,8 @@ public class AddStoreActivity extends AppCompatActivity {
     private Button mConfirmButton;
     private Button mClearButton;
     private DatabaseReference mDBRef;
+    /*sets up activity for user to enter pet store name, address, and imageURL and add it to their
+    * list of favorite stores*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +47,7 @@ public class AddStoreActivity extends AppCompatActivity {
             }
         });
     }
-
+    /*adds the user-entered store with its fields into Realtime DB and clears the EditTexts*/
     public void confirm(){
         String name = mEditTextName.getText().toString().trim();
         String address = mEditTextAddress.getText().toString().trim();
@@ -61,12 +63,13 @@ public class AddStoreActivity extends AppCompatActivity {
         }
 
     }
+    //clears all user input
     public void clearFields(){
         mEditTextName.setText("");
         mEditTextAddress.setText("");
         mEditTextImageURL.setText("");
     }
-
+    //handles insertion of new store information to Realtime DB
     public void insertPetStore(PetStore newPetStore){
         mDBRef.push().setValue(newPetStore);
         Toast.makeText(AddStoreActivity.this, "Pet Store has been inserted in database",Toast.LENGTH_SHORT).show();

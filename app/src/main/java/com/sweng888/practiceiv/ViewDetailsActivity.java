@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 
 import model.PetStore;
 import model.PetStoreAdapter;
-
+/*Activity displaying stored information of a pet store in the user's list of favorites*/
 public class ViewDetailsActivity extends AppCompatActivity {
     private TextView mStoreNameTV;
     private TextView mStoreAddressTV;
@@ -42,7 +42,7 @@ public class ViewDetailsActivity extends AppCompatActivity {
 
 
     }
-
+    /*sets the image for the store given an image URL*/
     private void setImageBitmap(String imageURL){
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new android.os.Handler(Looper.getMainLooper());

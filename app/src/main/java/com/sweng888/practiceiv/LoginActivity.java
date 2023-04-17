@@ -81,7 +81,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.button_sign_up: SignUp(); break;
         }
     }
-
+    /*uses Firebase Authenticatin to sign in an existing user and pass their email to the navigation
+    * drawer activity*/
     private void SignIn(String email, String password){
         mFirebaseAuth.signInWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -99,6 +100,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     }
                 });
     }
+    /*launches the sign up page for a new user to create an account*/
     private void SignUp(){
         Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
         startActivity(intent);
